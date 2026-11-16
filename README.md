@@ -20,7 +20,6 @@ Operators use **TrustNav Mission Control**, a browser-based 3D console with sens
 
 ## Contact
 
-Kuan-Shun Su · Institute of Manufacturing Information and Systems, National Cheng Kung University, Tainan, Taiwan
-guanshun58@gmail.com · +886 933 180 363
+Cheng-Chou Chang · allenbecareful@gmail.com · +886 922 748 788
 
 This repository contains only the public showcase site. The software is available for pilots and licensing on request.
