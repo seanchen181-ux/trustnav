@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrustNav · Localization integrity for orchard robots</title>
+<meta name="description" content="TrustNav tells an orchard robot's operator when its position can no longer be trusted: clear continue / slow down / stop modes, a 3D mission console and human-in-the-loop approval.">
+<meta property="og:title" content="TrustNav · Localization integrity for orchard robots">
+<meta property="og:description" content="Know when your robot's position can't be trusted.">
+<meta property="og:image" content="assets/shot_dense_low.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05080d; --bg2:#0a1019; --panel:#0d1520; --line:#1a2638; --line2:#24344d;
+  --text:#e6edf7; --muted:#93a4bf; --dim:#5d6f8c;
+  --ok:#2fd67b; --warn:#ffb020; --hold:#ff4d57; --blue:#3fa9ff; --orange:#ff9a3d;
+  --serif:"IBM Plex Serif",Georgia,serif; --sans:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:10;background:#05080de6;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:58px}
+nav .logo{font:600 17px var(--serif);text-decoration:none;display:flex;align-items:center;gap:9px}
+nav .logo i{width:11px;height:11px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
+nav .links{margin-left:auto;display:flex;gap:20px;font:500 13px var(--mono);letter-spacing:.04em}
+nav .links a{text-decoration:none;color:var(--muted)}nav .links a:hover{color:var(--text)}
+.eyebrow{font:500 12.5px var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.hero{padding:88px 0 56px;border-bottom:1px solid var(--line)}
+.hero h1{font:500 clamp(38px,6vw,68px)/1.06 var(--serif);margin:18px 0 22px;letter-spacing:-.01em}
+.hero h1 em{color:var(--ok);font-style:italic}
+.hero p.lead{font-size:19px;color:var(--muted);max-width:720px;margin:0 0 30px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;border:1px solid var(--line2);text-decoration:none;font:500 14px var(--mono);letter-spacing:.02em;background:var(--panel)}
+.btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+.btn:hover{border-color:var(--muted)}
+.heroimg{margin-top:48px;border-radius:14px;overflow:hidden;border:1px solid var(--line2);box-shadow:0 30px 80px #0009}
+.cap{font:13px/1.5 var(--sans);color:var(--dim);margin-top:10px}
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+section h2{font:500 clamp(28px,4vw,40px)/1.15 var(--serif);margin:12px 0 18px}
+section p.intro{color:var(--muted);font-size:17.5px;max-width:760px;margin:0 0 34px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:8px}
+.stat{background:var(--bg2);padding:22px 20px}
+.stat b{display:block;font:500 30px/1.1 var(--serif);margin-bottom:8px}
+.stat b small{font-size:16px;color:var(--muted)}
+.stat span{font-size:13.5px;color:var(--muted);line-height:1.45;display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card h3{font:600 18px/1.3 var(--serif);margin:10px 0 8px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.tag{font:500 11.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.modes{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 4px}
+.mode{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid var(--line2);font:500 13px var(--mono)}
+.mode i{width:10px;height:10px;border-radius:50%}
+.shot{border-radius:12px;overflow:hidden;border:1px solid var(--line2)}
+.feature{display:grid;grid-template-columns:1.25fr 1fr;gap:34px;align-items:center;margin-bottom:54px}
+.feature.rev{grid-template-columns:1fr 1.25fr}.feature.rev .txt{order:-1}
+.feature h3{font:500 25px/1.25 var(--serif);margin:10px 0 10px}
+.feature p{color:var(--muted);margin:0 0 10px}
+.feature ul{color:var(--muted);margin:8px 0 0;padding-left:18px}.feature li{margin:4px 0}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line2)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);color:var(--muted)}
+td b{color:var(--text);font-weight:500}td.num{font-family:var(--mono);color:var(--text);white-space:nowrap}
+.note{border-left:3px solid var(--warn);background:#ffb0200d;padding:14px 18px;border-radius:0 10px 10px 0;color:var(--muted);font-size:15px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:500 13px var(--mono);color:var(--muted);margin:18px 0}
+.flow span{padding:7px 12px;border:1px solid var(--line2);border-radius:8px;background:var(--panel);color:var(--text)}
+footer{padding:46px 0 60px;color:var(--dim);font-size:13.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between}
+@media (max-width:860px){
+  .stats{grid-template-columns:1fr 1fr}.grid2,.grid3,.feature,.feature.rev{grid-template-columns:1fr}.feature.rev .txt{order:0}
+  nav .links{display:none}.hero{padding-top:56px}section{padding:60px 0}
+}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="logo" href="#top"><i></i>TrustNav</a>
+  <div class="links"><a href="#problem">Problem</a><a href="#how">How it works</a><a href="#console">Console</a><a href="#results">Results</a><a href="#extensions">Sensors</a><a href="#contact">Contact</a></div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div class="eyebrow">Orchard robotics · Localization integrity</div>
+  <h1>Know when your robot's position<br><em>can't be trusted.</em></h1>
+  <p class="lead">Under the tree canopy, GPS can jump by meters while still claiming centimeter accuracy. TrustNav watches every position source, decides when the robot should continue, slow down or stop, and gives the operator a console to see why and to approve what happens next.</p>
+  <div class="cta"><a class="btn primary" href="#console">See the console →</a><a class="btn" href="#results">Measured results →</a><a class="btn" href="#contact">Licensing &amp; pilots →</a></div>
+  <div class="heroimg"><img src="assets/shot_dense_low.jpg" alt="TrustNav Mission Control: Jackal robot in a dense RGB point-cloud map of a citrus orchard row"></div>
+  <div class="cap">TrustNav Mission Control replaying a real orchard run: the robot inside a 3D map built from its own camera, only while its position is trusted.</div>
+</div></header>
+
+<section id="problem"><div class="wrap">
+  <div class="eyebrow">The problem</div>
+  <h2>A robot that trusts a confident GPS will drive out of the row.</h2>
+  <p class="intro">Under the canopy, satellite positioning rarely just switches off. It jumps by meters or drifts slowly while still claiming high accuracy. Typical navigation software believes it, the robot reports that everything is fine, and the person supervising the fleet has no reliable signal for when to step in.</p>
+  <div class="grid2">
+    <div class="shot"><img src="assets/c0_unsafe.jpg" alt="A conventional system still reports NORMAL while more than a meter off"></div>
+    <div class="card"><div class="tag">What a conventional system does</div><h3>"All normal", more than a meter off the row</h3><p>During a burst of GPS errors, a conventional system (orange) keeps reporting NORMAL with centimeter-level confidence while its real error grows past a meter. TrustNav (blue) flags the same moment within seconds.</p></div>
+  </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+  <div class="eyebrow">How it works</div>
+  <h2>A trust layer on top of your existing navigation.</h2>
+  <p class="intro">TrustNav works with the positioning your robot already has and adds three safeguards. Safety decisions follow fixed, auditable rules; no AI model is in the decision path.</p>
+  <div class="grid3">
+    <div class="card"><div class="tag">01 · Cross-checking</div><h3>Every position source is checked</h3><p>Each source is continuously compared with the others. A source that disagrees is set aside before it can pull the robot off course.</p></div>
+    <div class="card"><div class="tag">02 · Verified recovery</div><h3>Trust is earned back</h3><p>When a source returns, it is verified step by step before it is used again, so one good reading cannot hide a bad stretch.</p></div>
+    <div class="card"><div class="tag">03 · Clear operating modes</div><h3>Continue, slow down or stop</h3><p>The robot's own confidence turns into one of three modes that machines and people can act on.</p>
+      <div class="modes"><span class="mode"><i style="background:var(--ok)"></i>NORMAL</span><span class="mode"><i style="background:var(--warn)"></i>DEGRADED · slow down</span><span class="mode"><i style="background:var(--hold)"></i>HOLD · stop</span></div></div>
+  </div>
+  <div class="flow"><span>Robot sensors</span>→<span>TrustNav</span>→<span>NORMAL / DEGRADED / HOLD</span>→<span>Mission Control</span>→<span>Operator approval</span>→<span>Audit log</span></div>
+</div></section>
+
+<section id="console"><div class="wrap">
+  <div class="eyebrow">Product · Mission Control</div>
+  <h2>One screen for the operator, every detail for the engineer.</h2>
+  <p class="intro">A browser-based 3D console that replays the robot in its own map, shows how much each sensor can be trusted, and turns every stop into an auditable ticket.</p>
+
+  <div class="feature">
+    <div class="shot"><img src="assets/hold_card.jpg" alt="Stop event card with evidence and recorded decision"></div>
+    <div class="txt"><div class="tag">Human in the loop</div><h3>Every stop opens a ticket automatically</h3>
+      <p>When the robot stops, the operator gets an alert, the evidence behind the decision and a simple form: send someone to inspect, resume, or keep holding.</p>
+      <ul><li>Each decision is logged with ticket number, operator and time.</li><li>Recording a decision never restarts the robot by itself.</li><li>"Why did it stop?" is answered by an assistant that can only read the logs.</li></ul></div>
+  </div>
+  <div class="feature rev">
+    <div class="shot"><img src="assets/engineer.jpg" alt="Engineer view with sensor trust and metrics"></div>
+    <div class="txt"><div class="tag">Operator and engineer views</div><h3>Status at a glance, metrics on demand</h3>
+      <p>The operator view shows a status light, the current event and a timeline. The engineer view adds sensor trust, confidence, accuracy against a reference, scorecards and map tools.</p>
+      <p>The timeline compresses a whole run: the mode of each system, when the problem started, how far off each system really was, and clickable event markers.</p></div>
+  </div>
+  <div class="feature">
+    <div class="shot"><img src="assets/map_check.jpg" alt="Maps built with three different position estimates"></div>
+    <div class="txt"><div class="tag">Mapping you can trust</div><h3>Only map while the position is trusted</h3>
+      <p>The same sensor data mapped with three different position estimates. Mapping only while TrustNav says the position is reliable keeps "ghost trees" out of the farm map.</p>
+      <ul><li>A conventional system adds 287 scans during the fault, with ghost trees.</li><li>TrustNav adds 40, and 99.7 % of their points land within 25 cm of the true map.</li></ul></div>
+  </div>
+  <div class="feature rev">
+    <div class="shot"><img src="assets/shot_vision.jpg" alt="Camera-based mapping view with decisions frame by frame"></div>
+    <div class="txt"><div class="tag">Camera mapping</div><h3>Dense 3D maps from the robot's camera</h3>
+      <p>Camera frames become a colored 3D map of the row, and the camera helps hold the position when satellite positioning drops out. Every frame shows what the system decided and why.</p></div>
+  </div>
+</div></section>
+
+<section id="results"><div class="wrap">
+  <div class="eyebrow">Measured results</div>
+  <h2>Tested on public field data, not on the data we tuned on.</h2>
+  <p class="intro">Evaluated on a public citrus-orchard dataset recorded by a field robot in three fields. Settings were fixed on one run; six other runs, each repeated three times (360 test runs in total), were used only for testing.</p>
+  <div class="stats">
+    <div class="stat"><b>3.2 % <small>→</small> 0.12 %</b><span>time the robot says "all normal" while more than 0.5 m off, with GPS errors</span></div>
+    <div class="stat"><b>30 % <small>→</small> 0.6 %</b><span>the same measure during the problem itself</span></div>
+    <div class="stat"><b>2.3 s</b><span>average time to set the faulty source aside</span></div>
+    <div class="stat"><b>3 fields</b><span>same settings, consistent results in every field</span></div>
+  </div>
+  <div class="grid2" style="margin-top:34px">
+    <div class="shot"><img src="assets/per_sequence.jpg" alt="Results per test run"></div>
+    <div class="shot"><img src="assets/result_scopes.jpg" alt="Results across evaluation scopes"></div>
+  </div>
+  <h3 style="font:500 22px var(--serif);margin:46px 0 12px">What it costs</h3>
+  <table>
+    <tr><th>What</th><th>Measured</th><th>Why it matters</th></tr>
+    <tr><td><b>Accuracy while GPS is set aside</b></td><td class="num">0.61 → 1.82 m</td><td>The robot keeps going on its other sensors; TrustNav says so (slow down or stop) instead of claiming all is normal.</td></tr>
+    <tr><td><b>Everyday accuracy</b></td><td class="num">8.5 cm</td><td>Never stops the robot when nothing is wrong.</td></tr>
+    <tr><td><b>Caution in normal operation</b></td><td class="num">≈ ⅓ of the time "slow down"</td><td>Conservative out of the box; tuned per farm during a pilot.</td></tr>
+  </table>
+</div></section>
+
+<section id="extensions"><div class="wrap">
+  <div class="eyebrow">More sensors, more evidence</div>
+  <h2>The more independent sources agree, the safer the robot.</h2>
+  <p class="intro">The same principle scales to every sensor on the robot: GPS, wheels, motion sensor, laser scanner and camera. A sensor is only blamed when the others agree it is wrong. Demonstrated on one field run.</p>
+  <div class="feature">
+    <div class="shot"><img src="assets/c3_imu.jpg" alt="Five-sensor view setting aside a faulty sensor"></div>
+    <div class="txt"><div class="tag">Five sensors</div><h3>Faulty sensors are found in seconds</h3>
+      <ul><li>Slipping wheels found in 4.7 s, a faulty motion sensor in 3.2 s, a blocked laser scanner in 1–3 s, while the others kept the position.</li><li>One minute without GPS: the position stays within about a meter.</li><li>Stays "all normal" 99.5 % of a fault-free run.</li></ul></div>
+  </div>
+  <div class="feature rev">
+    <div class="shot"><img src="assets/shot_states_measured.jpg" alt="Measured paths for three sensor sets on a full route"></div>
+    <div class="txt"><div class="tag">Full route, measured</div><h3>Why combining sensors matters</h3>
+      <table><tr><th>Sensors available</th><th>Average error</th></tr>
+        <tr><td>All five</td><td class="num">0.08 m</td></tr>
+        <tr><td>No GPS (wheels, motion sensor, laser, camera)</td><td class="num">2.55 m</td></tr>
+        <tr><td>A basic camera alone</td><td class="num">49 m</td></tr></table>
+      <p style="margin-top:10px">One sensor alone gets lost at the end of a row; together they keep the robot on track.</p></div>
+  </div>
+</div></section>
+
+<section id="integration"><div class="wrap">
+  <div class="eyebrow">Integration</div>
+  <h2>What you plug in, what you get back.</h2>
+  <div class="grid3">
+    <div class="card"><div class="tag">Inputs</div><h3>Your robot's data</h3><p>Wheel motion and GPS at minimum. Optional: motion sensor, laser scanner, cameras.</p></div>
+    <div class="card"><div class="tag">Outputs</div><h3>Trust you can act on</h3><p>Operating mode, how much each sensor can be trusted, timestamped events with reasons, and a farm map built only from trusted positions.</p></div>
+    <div class="card"><div class="tag">For your team</div><h3>Console, approvals, reports</h3><p>A web console for operators, an approval workflow with an audit log, and an assistant that answers questions from the logs.</p></div>
+  </div>
+  <div class="note" style="margin-top:28px"><b style="color:var(--text)">Current status.</b> Mission Control replays recorded field runs and is not yet connected to a live robot. Results come from a public dataset with simulated GPS problems; validation on your robots and your farms is the next step, and the purpose of a pilot.</div>
+</div></section>
+
+<section id="contact" style="border-bottom:0"><div class="wrap">
+  <div class="eyebrow">Contact</div>
+  <h2>Pilots, licensing and integration.</h2>
+  <p class="intro">We are looking for orchard and specialty-crop robot makers who want an integrity layer on their localization stack: a pilot on your data, a licence, or joint field validation.</p>
+  <div class="grid2">
+    <div class="card"><div class="tag">Primary contact</div><h3>Kuan-Shun Su</h3>
+      <p>Institute of Manufacturing Information and Systems<br>National Cheng Kung University, Tainan, Taiwan</p>
+      <p style="margin-top:12px;font-family:var(--mono);font-size:14px;color:var(--text)"><a href="mailto:guanshun58@gmail.com">guanshun58@gmail.com</a><br><a href="tel:+886933180363">+886 933 180 363</a></p>
+      <p style="margin-top:8px;font-size:13px">ORCID <a href="https://orcid.org/0009-0007-2657-5434">0009-0007-2657-5434</a></p></div>
+    <div class="card"><div class="tag">Team</div><h3>Cheng-Chou Chang</h3>
+      <p>Institute of Manufacturing Information and Systems<br>National Cheng Kung University, Tainan, Taiwan</p>
+      <p style="margin-top:8px;font-size:13px">ORCID <a href="https://orcid.org/0009-0000-6817-5788">0009-0000-6817-5788</a></p></div>
+  </div>
+  <div class="cta" style="margin-top:24px"><a class="btn primary" href="mailto:guanshun58@gmail.com?subject=TrustNav%20inquiry">Email us →</a><a class="btn" href="tel:+886933180363">Call +886 933 180 363</a><a class="btn" href="#results">Review the results →</a></div>
+</div></section>
+
+<footer><div class="wrap">
+  <span>© 2026 TrustNav</span>
+  <span>Figures are from replays of recorded field data.</span>
+</div></footer>
+</body>
+</html>
