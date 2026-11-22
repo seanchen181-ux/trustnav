@@ -1,0 +1,19 @@
+WEBVTT
+
+00:00.000 --> 00:04.000
+TrustNav. Know when your robot’s position can’t be trusted.
+
+00:04.000 --> 00:12.000
+Recorded orchard replay: the route, robot and camera map in one view.
+
+00:12.000 --> 00:23.000
+GPS loss leads to a HOLD recommendation and an operator ticket.
+
+00:23.000 --> 00:31.000
+Three sensor-state paths. This segment is an illustration, not measured performance.
+
+00:31.000 --> 00:41.000
+A short camera-mapping replay shows visual positioning and map reconstruction.
+
+00:41.000 --> 00:46.000
+Replay evaluation: false-NORMAL time falls from 3.2% to 0.12%. Accuracy and operating-time trade-offs are detailed below.
