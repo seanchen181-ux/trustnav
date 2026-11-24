@@ -9,7 +9,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<nav aria-label="Main navigation"><a class="wordmark" href="#top">TrustNav</a><div class="navlinks"><a href="#latest">Latest film</a><a href="#experience">Experience</a><a href="#demo">Watch demo</a><a href="#evidence">Evidence</a></div><a class="navcta" href="#contact">Discuss a pilot</a></nav>
+<nav aria-label="Main navigation"><a class="wordmark" href="#top">TrustNav</a><div class="navlinks"><a href="#latest">Aerial robotics</a><a href="#experience">Experience</a><a href="#demo">Watch demo</a><a href="#evidence">Evidence</a></div><a class="navcta" href="#contact">Discuss a pilot</a></nav>
 <main id="main">
 <section class="hero" id="top">
  <div id="terrain" role="img" aria-label="Interactive recorded orchard reconstruction"></div>
@@ -39,13 +39,15 @@
  <p class="source">Source: CitrusFarm replay evaluation · D3, 18 runs per method · 2026-11-15 evaluation export.</p>
 </section>
 <section class="latest-section" id="latest">
- <div class="latest-heading reveal"><p class="eyebrow">06 / HYBRIDSWARM · SIMULATION SHOWCASE</p><h2>Four perspectives.<br> <span>One shared space.</span></h2><p>Follow four simulated aircraft. Explore their camera views.<br> See the shared point cloud take shape.</p><button class="button primary" id="play-latest">Watch the latest film <span aria-hidden="true">▶</span></button></div>
+ <div class="latest-heading reveal"><p class="eyebrow">06 / HYBRIDSWARM · SIMULATION SHOWCASE</p><h2>Four perspectives.<br> <span>One shared space.</span></h2><p>Follow four simulated aircraft. Explore their camera views.<br> See the shared point cloud take shape.</p><button class="button primary" id="play-latest">Watch the drone demo <span aria-hidden="true">▶</span></button></div>
+ <div class="swarm-explorer"><div class="swarm-copy"><p class="eyebrow">EXPLORE THE FOUR-AIRCRAFT CONCEPT</p><h3>More viewpoints.<br> A shared understanding.</h3><p>Explore an animated four-aircraft illustration, then watch the recorded simulation below.</p><div class="swarm-actions"><button id="swarm-play" aria-pressed="false">Play animation</button><button id="swarm-reset">Reset view</button></div><p class="swarm-note" id="swarm-note">Illustrative flight paths · not measured trajectories</p></div><div id="swarm-scene" role="img" aria-label="Interactive schematic of four aircraft, not recorded flight trajectories"></div></div>
+ <div class="swarm-features"><button data-detail="fleet"><span>01 / FOUR AIRCRAFT</span><strong>See the whole mission.</strong><small>Explore the simulation ↗</small></button><button data-detail="views"><span>02 / CAMERA VIEWS</span><strong>Look from each perspective.</strong><small>Explore the camera evidence ↗</small></button><button data-detail="map"><span>03 / SHARED POINT CLOUD</span><strong>Review the reconstructed space.</strong><small>Explore the mapping view ↗</small></button></div>
  <div class="latest-stage reveal"><video id="latest-video" controls playsinline preload="none" poster="assets/hybridswarm-poster.jpg" aria-label="HybridSwarm four-aircraft simulation recording, 35 seconds, English narration"><source src="assets/hybridswarm-narrated.mp4" type="video/mp4"><track kind="captions" src="assets/hybridswarm-en.vtt" srclang="en" label="English">Your browser does not support video. <a href="assets/hybridswarm-narrated.mp4">Download the film</a>.</video></div>
  <div class="film-context"><span>35 seconds · Simulation recording · English narration</span><p>A separate HybridSwarm demonstration supplied by our collaborator. Integration with TrustNav is under review.</p></div>
 </section>
 <section class="pilot" id="contact"><div class="pilot-top reveal"><p class="eyebrow">THE NEXT STEP IS YOUR ROBOT</p><h2>Bring your route.<br> Let’s examine the decisions.</h2><p>For orchard robot manufacturers evaluating positioning under canopy. Start with your recorded data, an agreed baseline, and a review of where intervention is needed.</p><a class="button primary" href="mailto:allenbecareful@gmail.com?subject=TrustNav%20pilot%20discussion">Discuss a pilot</a></div><div class="pilot-bottom"><div><span class="eyebrow">PROPOSED PILOT</span><p>Your logs.<br> A shared evaluation.<br> A practical integration plan.</p></div><div><span class="eyebrow">CURRENT STAGE</span><p>Replay-based prototype.<br> Live robot integration and independent field validation are the next milestones.</p></div><div><span class="eyebrow">CONTACT</span><p>Cheng-Chou Chang<br> <a href="mailto:allenbecareful@gmail.com">allenbecareful@gmail.com</a><br> <a href="tel:+886922748788">+886 922 748 788</a></p></div></div></section>
 </main><footer><a class="wordmark" href="#top">TrustNav</a><span>© 2026 TrustNav</span><span>Product preview · November 2026</span></footer>
 <dialog id="detail-dialog" aria-labelledby="detail-title"><button class="dialog-close" aria-label="Close details">×</button><p class="eyebrow" id="detail-kicker"></p><h2 id="detail-title"></h2><p id="detail-copy"></p><img id="detail-image" alt=""><p id="detail-note"></p><button class="button primary dialog-done">Back to the experience</button></dialog>
-<script src="app.js"></script><script type="module" src="scene.js"></script>
+<script src="app.js"></script><script type="module" src="scene.js"></script><script type="module" src="swarm.js"></script>
 </body></html>
 
